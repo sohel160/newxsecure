@@ -32,7 +32,7 @@ export default {
       const proxies = `
 proxies:
   - {name: proxy1, type: http, server: 103.198.132.184, port: 2610}
-  - {name: proxy2, type: http, server: 121.200.62.253, port: 64182}
+  - {name: proxy2, type: http, server: 121.200.62.81, port: 64182}
 
 `
 
