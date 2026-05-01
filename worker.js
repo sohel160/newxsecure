@@ -40,8 +40,7 @@ proxies:
     type: http
     server: 103.198.133.36
     port: 2610
-
-  
+    
 `
 
       return new Response(proxies, {
