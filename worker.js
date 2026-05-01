@@ -65,15 +65,6 @@ proxy-providers:
 
 proxy-groups:
 
-  # 🔥 Auto fastest
-  - name: AUTO
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    use:
-      - myprovider
-
   # ⚡ Load balance
   - name: LOAD-BALANCE
     type: load-balance
@@ -93,10 +84,8 @@ proxy-groups:
   - name: SPEED🔥
     type: select
     proxies:
-      - AUTO
       - LOAD-BALANCE
       - ALL
-      - DIRECT
 
 rules:
   - DOMAIN-SUFFIX,googlevideo.com,SPEED🔥
