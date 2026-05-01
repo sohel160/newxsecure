@@ -31,7 +31,7 @@ export default {
 
       const proxies = `
 proxies:
-  - {name: "FTP_01", type: socks5, server: 103.179.155.84, port: 9168, username: "u0a6309cf4e11", password: "-nYl6DiOoBBJ3g3O"}
+  - {name: "FTP_01", type: socks5, server: 121.200.62.142, port: 64182}
   - {name: "FTP_02", type: socks5, server: 121.200.62.73, port: 64182} 
 `
 
