@@ -31,9 +31,60 @@ export default {
 
       const proxies = `
 proxies:
-  - {name: proxy1, type: socks5, server: 121.200.62.73, port: 64182}
-  - {name: proxy2, type: socks5, server: 121.200.62.81, port: 64182}
+  - name: FTP1
+    type: http
+    server: 103.198.132.93
+    port: 2610
 
+  - name: FTP2
+    type: http
+    server: 103.198.133.138
+    port: 2610
+
+  - name: proxy1
+    type: http
+    server: 144.48.108.121
+    port: 5452
+
+  - name: proxy2
+    type: http
+    server: 144.48.108.122
+    port: 5452
+
+  - name: proxy3
+    type: http
+    server: 203.76.108.222
+    port: 27271
+
+  - name: proxy4
+    type: http
+    server: 103.167.17.220
+    port: 2610
+
+  - name: proxy6
+    type: http
+    server: 203.76.112.42
+    port: 27271
+
+  - name: proxy7
+    type: http
+    server: 203.76.115.98
+    port: 27271
+
+  - name: proxy8
+    type: http
+    server: 203.76.123.234
+    port: 27271
+
+  - name: proxy9
+    type: http
+    server: 27.147.221.155
+    port: 27271
+
+  - name: proxy10
+    type: http
+    server: 203.76.126.162
+    port: 27271
 `
 
       return new Response(proxies, {
@@ -58,7 +109,14 @@ proxy-providers:
 
 proxy-groups:
 
-  # ⚡ Load balance
+  - name: STABLE
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - myprovider
+
   - name: LOAD-BALANCE
     type: load-balance
     strategy: round-robin
@@ -67,29 +125,28 @@ proxy-groups:
     use:
       - myprovider
 
-  # 🎯 Manual control
   - name: ALL
     type: select
     use:
       - myprovider
 
-  # 🚀 Final selector
-  - name: SPEED🔥
+  - name: SELECTOR🔥
     type: select
     proxies:
+      - STABLE
       - LOAD-BALANCE
       - ALL
 
 rules:
-  - DOMAIN-SUFFIX,googlevideo.com,SPEED🔥
-  - DOMAIN-SUFFIX,youtube.com,SPEED🔥
-  - DOMAIN-SUFFIX,gstatic.com,SPEED🔥
-  - DOMAIN-SUFFIX,googleapis.com,SPEED🔥
-  - DOMAIN-SUFFIX,cloudflare.com,SPEED🔥
-  - DOMAIN-SUFFIX,akamaihd.net,SPEED🔥
-  - DOMAIN-SUFFIX,fastly.net,SPEED🔥
-  - DOMAIN-SUFFIX,cdn.jsdelivr.net,SPEED🔥
-  - MATCH,SPEED🔥
+  - DOMAIN-SUFFIX,googlevideo.com,SELECTOR🔥
+  - DOMAIN-SUFFIX,youtube.com,SELECTOR🔥
+  - DOMAIN-SUFFIX,gstatic.com,SELECTOR🔥
+  - DOMAIN-SUFFIX,googleapis.com,SELECTOR🔥
+  - DOMAIN-SUFFIX,cloudflare.com,SELECTOR🔥
+  - DOMAIN-SUFFIX,akamaihd.net,SELECTOR🔥
+  - DOMAIN-SUFFIX,fastly.net,SELECTOR🔥
+  - DOMAIN-SUFFIX,cdn.jsdelivr.net,SELECTOR🔥
+  - MATCH,SELECTOR🔥
 `
 
     return new Response(config, {
