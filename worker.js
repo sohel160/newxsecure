@@ -31,16 +31,9 @@ export default {
 
       const proxies = `
 proxies:
-  - name: FTP1
-    type: http
-    server: 103.198.133.36
-    port: 2610
-
-  - name: FTP2
-    type: http
-    server: 103.198.133.36
-    port: 2610
-    
+  - {name: "FTP_01", type: socks5, server: 103.179.155.84, port: 9168, username: "u0a6309cf4e11", password: "-nYl6DiOoBBJ3g3O"}
+  - {name: "FTP_02", type: socks5, server: 103.179.155.84, port: 9168, username: "u0a6309cf4e11", password: "-nYl6DiOoBBJ3g3O"}
+  
 `
 
       return new Response(proxies, {
