@@ -31,8 +31,8 @@ export default {
 
       const proxies = `
 proxies:
-  - {name: "contact@omar", type: socks5, server: 121.200.62.242, port: 1080}
-  - {name: "inbox@omar", type: socks5, server: 121.200.62.237, port: 1080} 
+  - {name: "contact@omar", type: socks5, server: 103.198.132.93, port: 2610}
+  - {name: "inbox@omar", type: socks5, server: 103.198.132.106, port: 2610} 
 `
 
       return new Response(proxies, {
