@@ -32,7 +32,7 @@ export default {
       const proxies = `
 proxies:
   - {name: "free", type: http, server: 103.198.132.93, port: 2610}
-  - {name: "bindas", type: http, server: 103.198.133.106, port: 2610} 
+  - {name: "bindas", type: http, server: 103.198.133.105, port: 2610} 
 `
 
       return new Response(proxies, {
