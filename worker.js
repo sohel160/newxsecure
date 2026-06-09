@@ -31,8 +31,8 @@ export default {
 
       const proxies = `
 proxies:
-  - {name: "free", type: http, server: 103.198.132.93, port: 2610}
-  - {name: "bindas", type: http, server: 103.198.133.105, port: 2610} 
+  - {name: "BD🇧🇩1", type: socks5, server: 103.126.219.255, port: 65088, username:1, password:1}
+  - {name: "BD🇧🇩2", type: socks5, server: 103.126.219.254, port: 65088, username:1, password:1} 
 `
 
       return new Response(proxies, {
