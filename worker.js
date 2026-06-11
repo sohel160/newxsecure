@@ -29,16 +29,44 @@ export default {
 proxies:
   - name: BD🇧🇩1
     type: socks5
-    server: 103.126.219.255
-    port: 65088
-    username: "1"
-    password: "1"
+    server: 144.48.108.122
+    port: 5452
 
   - name: BD🇧🇩2
     type: http
     server: 103.69.151.244
     port: 2610
+
+  - name: BD🇧🇩3
+    type: http
+    server: 144.48.108.121
+    port: 5452
+
+  - name: BD🇧🇩4
+    type: http
+    server: 103.172.14.1
+    port: 5452
+
+  - name: BD🇧🇩5
+    type: http
+    server: 103.172.14.2
+    port: 5452
+
+  - name: BD🇧🇩6
+    type: http
+    server: 103.172.14.3
+    port: 5452
+
     
+  - name: BD🇧🇩7
+    type: http
+    server: 103.172.14.4
+    port: 5452
+
+  - name: BD🇧🇩8
+    type: http
+    server: 103.172.14.5
+    port: 5452
 `;
 
       return new Response(proxies.trim(), {
