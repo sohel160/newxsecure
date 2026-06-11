@@ -101,6 +101,13 @@ proxy-providers:
       interval: 60
 
 proxy-groups:
+  - name: SELECTOR🔥
+    type: select
+    proxies:
+      - STABLE
+      - LOAD-BALANCE
+      - ALL
+      
   - name: STABLE
     type: url-test
     use:
@@ -122,12 +129,7 @@ proxy-groups:
     use:
       - myprovider
 
-  - name: SELECTOR🔥
-    type: select
-    proxies:
-      - STABLE
-      - LOAD-BALANCE
-      - ALL
+  
 
 rules:
   - DOMAIN-SUFFIX,googlevideo.com,SELECTOR🔥
