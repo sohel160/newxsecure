@@ -28,7 +28,7 @@ export default {
       const proxies = `
 proxies:
   - name: BD🇧🇩1
-    type: socks5
+    type: http
     server: 144.48.108.122
     port: 5452
 
