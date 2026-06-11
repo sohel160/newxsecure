@@ -35,11 +35,10 @@ proxies:
     password: "1"
 
   - name: BD🇧🇩2
-    type: socks5
-    server: 103.126.219.254
-    port: 65088
-    username: "1"
-    password: "1"
+    type: http
+    server: 103.69.151.244
+    port: 2610
+    
 `;
 
       return new Response(proxies.trim(), {
