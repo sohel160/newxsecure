@@ -88,37 +88,31 @@ proxies:
     type: socks5
     server: 103.84.36.142
     port: 11611
-    udp: true
 
   - name: "SOCKS5-2"
     type: socks5
     server: 103.84.36.210
     port: 11611
-    udp: true
 
   - name: "SOCKS5-3"
     type: socks5
     server: 103.84.36.143
     port: 11611
-    udp: true
 
   - name: "SOCKS5-4"
     type: socks5
     server: 103.84.36.249
     port: 11611
-    udp: true
 
   - name: "SOCKS5-5"
     type: socks5
     server: 103.84.36.204
     port: 11611
-    udp: true
 
   - name: "SOCKS5-6"
     type: socks5
     server: 103.84.36.251
     port: 6969
-    udp: true
 `;
 
       return new Response(proxiesYaml.trim(), {
