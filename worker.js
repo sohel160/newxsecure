@@ -157,11 +157,12 @@ proxy-groups:
 
   - name: LOAD-BALANCE
     type: load-balance
-    strategy: round-robin
+    strategy: consistent-hashing
     use:
       - myprovider
     url: https://www.gstatic.com/generate_204
-    interval: 300
+    interval: 10
+    tolerance: 100
 
   - name: ALL
     type: select
