@@ -9,34 +9,15 @@ export default {
 
     // Allow only Clash clients
     const ua = request.headers.get("User-Agent") || "";
-
-    const allowedUA = [
-      "Clash",
-      "clash",
-      "Meta",
-      "FiClash",
-      "Stash",
-      "okhttp"
-    ];
+    const allowedUA = ["Clash", "clash", "Meta", "FiClash", "Stash", "okhttp"];
 
     if (!allowedUA.some(a => ua.includes(a))) {
       return new Response("404 Not Found", { status: 404 });
     }
 
-    // Proxy list
+    // ====================== PROXIES ENDPOINT ======================
     if (url.pathname === "/proxies") {
-      const proxies = `
-proxies:
- 
-`;
-
-      return new Response(proxies.trim(), {
-        headers: { "Content-Type": "text/plain" }
-      });
-    }
-
-    // Main config
-    const proxies = `
+      const proxiesYaml = `
 proxies:
   - name: "HTTP-1"
     type: http
@@ -139,6 +120,14 @@ proxies:
     port: 6969
     udp: true
 `;
+
+      return new Response(proxiesYaml.trim(), {
+        headers: { "Content-Type": "text/plain" }
+      });
+    }
+
+    // ====================== MAIN CONFIG ======================
+    const config = `
 mixed-port: 7890
 allow-lan: true
 mode: rule
@@ -170,7 +159,7 @@ proxy-groups:
       - STABLE
       - LOAD-BALANCE
       - ALL
-      
+
   - name: STABLE
     type: url-test
     use:
@@ -192,8 +181,6 @@ proxy-groups:
     use:
       - myprovider
 
-  
-
 rules:
   - DOMAIN-SUFFIX,googlevideo.com,SELECTOR🔥
   - DOMAIN-SUFFIX,youtube.com,SELECTOR🔥
@@ -210,4 +197,4 @@ rules:
       headers: { "Content-Type": "text/plain" }
     });
   }
-}
+};
