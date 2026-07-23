@@ -2,12 +2,10 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    // Token protection
     if (url.searchParams.get("token") !== "abc123") {
       return new Response("Forbidden", { status: 403 });
     }
 
-    // Allow only Clash clients
     const ua = request.headers.get("User-Agent") || "";
     const allowedUA = ["Clash", "clash", "Meta", "FiClash", "Stash", "okhttp"];
 
@@ -15,10 +13,11 @@ export default {
       return new Response("404 Not Found", { status: 404 });
     }
 
-    // ====================== PROXIES ENDPOINT ======================
+    // ==================== PROXIES ENDPOINT ====================
     if (url.pathname === "/proxies") {
       const proxiesYaml = `
 proxies:
+  # === HTTP Proxies ===
   - name: "HTTP-1"
     type: http
     server: 103.84.39.92
@@ -84,35 +83,51 @@ proxies:
     server: 113.212.109.193
     port: 6258
 
+  # === SOCKS5 Proxies (Fixed) ===
   - name: "SOCKS5-1"
     type: socks5
     server: 103.84.36.142
     port: 11611
+    udp: true
+    udp-over-tcp: false
+    skip-cert-verify: true
 
   - name: "SOCKS5-2"
     type: socks5
     server: 103.84.36.210
     port: 11611
+    udp: true
+    udp-over-tcp: false
 
   - name: "SOCKS5-3"
     type: socks5
     server: 103.84.36.143
     port: 11611
+    udp: true
+    udp-over-tcp: false
+    skip-cert-verify: true
 
   - name: "SOCKS5-4"
     type: socks5
     server: 103.84.36.249
     port: 11611
+    udp: true
+    udp-over-tcp: false
 
   - name: "SOCKS5-5"
     type: socks5
     server: 103.84.36.204
     port: 11611
+    udp: true
+    udp-over-tcp: false
 
   - name: "SOCKS5-6"
     type: socks5
     server: 103.84.36.251
     port: 6969
+    udp: true
+    udp-over-tcp: false
+    skip-cert-verify: true
 `;
 
       return new Response(proxiesYaml.trim(), {
@@ -120,7 +135,7 @@ proxies:
       });
     }
 
-    // ====================== MAIN CONFIG ======================
+    // ==================== MAIN CONFIG ====================
     const config = `
 mixed-port: 7890
 allow-lan: true
@@ -144,7 +159,8 @@ proxy-providers:
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 60
+      interval: 180
+      tolerance: 200
 
 proxy-groups:
   - name: SELECTOR🔥
@@ -160,7 +176,7 @@ proxy-groups:
       - myprovider
     url: https://www.gstatic.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 150
 
   - name: LOAD-BALANCE
     type: load-balance
