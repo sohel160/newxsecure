@@ -83,29 +83,12 @@ proxies:
     server: 113.212.109.193
     port: 6258
 
-  # === SOCKS5 Proxies (Fixed) ===
-  - name: "SOCKS5-1"
-    type: socks5
-    server: 103.84.36.142
-    port: 11611
-    udp: true
-    udp-over-tcp: false
-    skip-cert-verify: true
-
   - name: "SOCKS5-2"
     type: socks5
     server: 103.84.36.210
     port: 11611
     udp: true
     udp-over-tcp: false
-
-  - name: "SOCKS5-3"
-    type: socks5
-    server: 103.84.36.143
-    port: 11611
-    udp: true
-    udp-over-tcp: false
-    skip-cert-verify: true
 
   - name: "SOCKS5-4"
     type: socks5
@@ -121,13 +104,7 @@ proxies:
     udp: true
     udp-over-tcp: false
 
-  - name: "SOCKS5-6"
-    type: socks5
-    server: 103.84.36.251
-    port: 6969
-    udp: true
-    udp-over-tcp: false
-    skip-cert-verify: true
+
 `;
 
       return new Response(proxiesYaml.trim(), {
