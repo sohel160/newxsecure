@@ -36,7 +36,109 @@ proxies:
     }
 
     // Main config
-    const config = `
+    const proxies = `
+proxies:
+  - name: "HTTP-1"
+    type: http
+    server: 103.84.39.92
+    port: 3258
+
+  - name: "HTTP-2"
+    type: http
+    server: 103.84.39.95
+    port: 3258
+
+  - name: "HTTP-3"
+    type: http
+    server: 103.84.39.94
+    port: 3258
+
+  - name: "HTTP-4"
+    type: http
+    server: 103.84.39.113
+    port: 3258
+
+  - name: "HTTP-5"
+    type: http
+    server: 103.84.39.161
+    port: 6258
+
+  - name: "HTTP-6"
+    type: http
+    server: 103.84.36.225
+    port: 52148
+
+  - name: "HTTP-7"
+    type: http
+    server: 103.84.36.237
+    port: 22622
+
+  - name: "HTTP-8"
+    type: http
+    server: 103.84.36.73
+    port: 52148
+
+  - name: "HTTP-9"
+    type: http
+    server: 103.84.36.169
+    port: 52148
+
+  - name: "HTTP-10"
+    type: http
+    server: 103.84.39.93
+    port: 3258
+
+  - name: "HTTP-11"
+    type: http
+    server: 103.192.159.17
+    port: 6258
+
+  - name: "HTTP-12"
+    type: http
+    server: 113.212.109.12
+    port: 6258
+
+  - name: "HTTP-13"
+    type: http
+    server: 113.212.109.193
+    port: 6258
+
+  - name: "SOCKS5-1"
+    type: socks5
+    server: 103.84.36.142
+    port: 11611
+    udp: true
+
+  - name: "SOCKS5-2"
+    type: socks5
+    server: 103.84.36.210
+    port: 11611
+    udp: true
+
+  - name: "SOCKS5-3"
+    type: socks5
+    server: 103.84.36.143
+    port: 11611
+    udp: true
+
+  - name: "SOCKS5-4"
+    type: socks5
+    server: 103.84.36.249
+    port: 11611
+    udp: true
+
+  - name: "SOCKS5-5"
+    type: socks5
+    server: 103.84.36.204
+    port: 11611
+    udp: true
+
+  - name: "SOCKS5-6"
+    type: socks5
+    server: 103.84.36.251
+    port: 6969
+    udp: true
+`;
 mixed-port: 7890
 allow-lan: true
 mode: rule
