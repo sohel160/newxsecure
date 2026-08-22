@@ -244,7 +244,8 @@ proxy-groups:
     type: select
     proxies:
       - LOAD-BALANCE
-
+ 			- STABLE
+      
   - name: STABLE
     type: url-test
     use:
@@ -255,7 +256,7 @@ proxy-groups:
 
   - name: LOAD-BALANCE
     type: load-balance
-    strategy: consistent-hashing
+    strategy: round-robin
     use:
       - myprovider
     url: https://www.gstatic.com/generate_204
