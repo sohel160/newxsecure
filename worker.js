@@ -2,12 +2,25 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
+    // 🔐 Token protection
     if (url.searchParams.get("token") !== "abc123") {
       return new Response("Forbidden", { status: 403 });
     }
 
+    // 🔍 Allow Clash / FiClash / Mihomo clients
     const ua = request.headers.get("User-Agent") || "";
-    const allowedUA = ["Clash", "clash", "Meta", "FiClash", "Stash", "okhttp"];
+
+    const allowedUA = [
+      "Clash",
+      "clash",
+      "Meta",
+      "FiClash",
+      "Stash",
+      "okhttp",
+      "mihomo",
+      "ClashMeta",
+      "Clash.Meta"
+    ];
 
     if (!allowedUA.some(a => ua.includes(a))) {
       return new Response("404 Not Found", { status: 404 });
@@ -17,7 +30,9 @@ export default {
     if (url.pathname === "/proxies") {
       const proxiesYaml = `
 proxies:
-  # === ORIGINAL HTTP PROXIES ===
+
+  # ==================== ORIGINAL HTTP PROXIES ====================
+
   - name: "HTTP-1"
     type: http
     server: 103.84.39.92
@@ -84,7 +99,8 @@ proxies:
     port: 6258
 
 
-  # === NEW HTTP PROXIES — PORT 5452 ===
+  # ==================== NEW HTTP PROXIES : PORT 5452 ====================
+
   - name: "HTTP-14"
     type: http
     server: 103.172.14.1
@@ -194,15 +210,18 @@ proxies:
     type: http
     server: 103.172.14.49
     port: 5452
-    
 `;
 
       return new Response(proxiesYaml.trim(), {
-        headers: { "Content-Type": "text/plain" }
+        headers: {
+          "Content-Type": "text/yaml; charset=utf-8",
+          "Cache-Control": "no-store"
+        }
       });
     }
 
     // ==================== MAIN CONFIG ====================
+
     const config = `
 mixed-port: 7890
 allow-lan: true
@@ -220,7 +239,7 @@ dns:
 proxy-providers:
   myprovider:
     type: http
-    url: "\${url.origin}/proxies?token=abc123"
+    url: "${url.origin}/proxies?token=abc123"
     path: ./proxies.yaml
     interval: 3600
     health-check:
@@ -230,6 +249,7 @@ proxy-providers:
       tolerance: 200
 
 proxy-groups:
+
   - name: SELECTOR🔥
     type: select
     proxies:
@@ -272,7 +292,10 @@ rules:
 `;
 
     return new Response(config.trim(), {
-      headers: { "Content-Type": "text/plain" }
+      headers: {
+        "Content-Type": "text/yaml; charset=utf-8",
+        "Cache-Control": "no-store"
+      }
     });
   }
 };
