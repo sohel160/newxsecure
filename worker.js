@@ -17,7 +17,7 @@ export default {
     if (url.pathname === "/proxies") {
       const proxiesYaml = `
 proxies:
-  # === HTTP Proxies ===
+  # === ORIGINAL HTTP PROXIES ===
   - name: "HTTP-1"
     type: http
     server: 103.84.39.92
@@ -83,28 +83,118 @@ proxies:
     server: 113.212.109.193
     port: 6258
 
-  - name: "SOCKS5-2"
-    type: socks5
-    server: 103.84.36.210
-    port: 11611
-    udp: true
-    udp-over-tcp: false
 
-  - name: "SOCKS5-4"
-    type: socks5
-    server: 103.84.36.249
-    port: 11611
-    udp: true
-    udp-over-tcp: false
+  # === NEW HTTP PROXIES — PORT 5452 ===
+  - name: "HTTP-14"
+    type: http
+    server: 103.172.14.1
+    port: 5452
 
-  - name: "SOCKS5-5"
-    type: socks5
-    server: 103.84.36.204
-    port: 11611
-    udp: true
-    udp-over-tcp: false
+  - name: "HTTP-15"
+    type: http
+    server: 103.172.14.2
+    port: 5452
 
+  - name: "HTTP-16"
+    type: http
+    server: 103.172.14.3
+    port: 5452
 
+  - name: "HTTP-17"
+    type: http
+    server: 103.172.14.4
+    port: 5452
+
+  - name: "HTTP-18"
+    type: http
+    server: 103.172.14.5
+    port: 5452
+
+  - name: "HTTP-19"
+    type: http
+    server: 103.172.15.5
+    port: 5452
+
+  - name: "HTTP-20"
+    type: http
+    server: 103.172.15.9
+    port: 5452
+
+  - name: "HTTP-21"
+    type: http
+    server: 103.172.15.17
+    port: 5452
+
+  - name: "HTTP-22"
+    type: http
+    server: 103.172.15.21
+    port: 5452
+
+  - name: "HTTP-23"
+    type: http
+    server: 144.48.108.122
+    port: 5452
+
+  - name: "HTTP-24"
+    type: http
+    server: 144.48.108.121
+    port: 5452
+
+  - name: "HTTP-25"
+    type: http
+    server: 43.250.81.137
+    port: 5452
+
+  - name: "HTTP-26"
+    type: http
+    server: 103.172.14.17
+    port: 5452
+
+  - name: "HTTP-27"
+    type: http
+    server: 103.172.14.33
+    port: 5452
+
+  - name: "HTTP-28"
+    type: http
+    server: 103.172.14.41
+    port: 5452
+
+  - name: "HTTP-29"
+    type: http
+    server: 103.172.14.57
+    port: 5452
+
+  - name: "HTTP-30"
+    type: http
+    server: 103.172.14.65
+    port: 5452
+
+  - name: "HTTP-31"
+    type: http
+    server: 103.172.14.72
+    port: 5452
+
+  - name: "HTTP-32"
+    type: http
+    server: 103.172.14.245
+    port: 5452
+
+  - name: "HTTP-33"
+    type: http
+    server: 103.172.14.250
+    port: 5452
+
+  - name: "HTTP-34"
+    type: http
+    server: 103.172.14.253
+    port: 5452
+
+  - name: "HTTP-35"
+    type: http
+    server: 103.172.14.49
+    port: 5452
+    
 `;
 
       return new Response(proxiesYaml.trim(), {
@@ -130,7 +220,7 @@ dns:
 proxy-providers:
   myprovider:
     type: http
-    url: "${url.origin}/proxies?token=abc123"
+    url: "\${url.origin}/proxies?token=abc123"
     path: ./proxies.yaml
     interval: 3600
     health-check:
