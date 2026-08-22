@@ -68,16 +68,6 @@ proxies:
     server: 103.84.36.237
     port: 22622
 
-  - name: "HTTP-8"
-    type: http
-    server: 103.84.36.73
-    port: 52148
-
-  - name: "HTTP-9"
-    type: http
-    server: 103.84.36.169
-    port: 52148
-
   - name: "HTTP-10"
     type: http
     server: 103.84.39.93
