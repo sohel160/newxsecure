@@ -31,18 +31,18 @@ export default {
 
       const proxies = `
 proxies:
-  - { name: "HTTP-01", type: http, server: 103.115.242.157, port: 2610 }
-  - { name: "HTTP-02", type: http, server: 103.115.242.1, port: 7860 }
-  - { name: "HTTP-03", type: http, server: 180.149.232.85, port: 2610 }
-  - { name: "HTTP-04", type: http, server: 180.149.235.128, port: 2610 }
-  - { name: "HTTP-05", type: http, server: 103.69.150.3, port: 2908 }
-  - { name: "HTTP-06", type: http, server: 103.69.150.34, port: 4884 }
-  - { name: "HTTP-07", type: http, server: 103.69.150.24, port: 7258 }
-  - { name: "HTTP-08", type: http, server: 103.69.150.75, port: 7852 }
-  - { name: "HTTP-09", type: http, server: 103.69.150.77, port: 7840 }
-  - { name: "HTTP-10", type: http, server: 103.109.96.65, port: 7860 }
-  - { name: "HTTP-11", type: http, server: 103.69.150.75, port: 7852 }
-  - { name: "HTTP-12", type: http, server: 203.188.255.21, port: 11611 }
+  - { name: "HTTP-01", type: http, server: 103.115.242.157, port:  }
+  - { name: "HTTP-02", type: http, server: 103.115.242.1, port:  }
+  - { name: "HTTP-03", type: http, server: 180.149.232.85, port:  }
+  - { name: "HTTP-04", type: http, server: 180.149.235.128, port:   }
+  - { name: "HTTP-05", type: http, server: 103.69.150.3, port:  }
+  - { name: "HTTP-06", type: http, server: 103.69.150.34, port:  }
+  - { name: "HTTP-07", type: http, server: 103.69.150.24, port:  }
+  - { name: "HTTP-08", type: http, server: 103.69.150.75, port:  }
+  - { name: "HTTP-09", type: http, server: 103.69.150.77, port:  }
+  - { name: "HTTP-10", type: http, server: 103.109.96.65, port:  }
+  - { name: "HTTP-11", type: http, server: 103.69.150.75, port:   }
+  - { name: "HTTP-12", type: http, server: 203.188.255.21, port:  }
 `
 
       return new Response(proxies, {
