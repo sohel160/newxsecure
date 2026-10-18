@@ -115,7 +115,7 @@ rules:
   - DOMAIN-SUFFIX,firefox.net,DIRECT
 
   # Everything else
-  - MATCH,"SELECTOR🔥"
+  - MATCH,SELECTOR🔥
 `;
 
     return new Response(config, {
