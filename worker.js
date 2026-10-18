@@ -35,8 +35,8 @@ proxies:
   - { name: "HTTP-02", type: http, server: 180.149.232.56, port: 8090 }
   - { name: "HTTP-03", type: http, server: 180.149.232.85, port: 2610 }
   - { name: "HTTP-04", type: http, server: 180.149.232.122, port: 7860 }
-	- { name: "HTTP-05", type: http, server: 119.40.90.1, port: 11611 }
-	- { name: "HTTP-06", type: http, server: 180.149.235.137, port: 6321 }
+  - { name: "HTTP-05", type: http, server: 119.40.90.1, port: 11611 }
+  - { name: "HTTP-06", type: http, server: 180.149.235.137, port: 6321 }
   - { name: "HTTP-07", type: http, server: 180.149.235.120, port:7860 }
   - { name: "HTTP-08", type: http, server: 182.48.70.215, port: 11611 }
 `
