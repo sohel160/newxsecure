@@ -1,15 +1,14 @@
 export default {
   async fetch(request) {
+    const url = new URL(request.url);
 
-    const url = new URL(request.url)
-
-    // 🔐 token protection
+    // Token protection
     if (url.searchParams.get("token") !== "abc123") {
-      return new Response("Forbidden", { status: 403 })
+      return new Response("Forbidden", { status: 403 });
     }
 
-    // 🔍 allow only Clash clients
-    const ua = request.headers.get("User-Agent") || ""
+    // Allow only specified clients
+    const ua = request.headers.get("User-Agent") || "";
 
     const allowedUA = [
       "Clash",
@@ -18,39 +17,35 @@ export default {
       "FiClash",
       "Stash",
       "okhttp"
-    ]
+    ];
 
     if (!allowedUA.some(a => ua.includes(a))) {
-      return new Response("404 Not Found", { status: 404 })
+      return new Response("404 Not Found", { status: 404 });
     }
 
-    // =========================
-    // 📦 PROXY LIST ENDPOINT
-    // =========================
+    // PROXY LIST ENDPOINT
     if (url.pathname === "/proxies") {
-
       const proxies = `
 proxies:
-  - { name: "HTTP-01", type: http, server: 180.149.232.209, port: 6212}
+  - { name: "HTTP-01", type: http, server: 180.149.232.209, port: 6212 }
   - { name: "HTTP-02", type: http, server: 180.149.232.56, port: 8090 }
   - { name: "HTTP-03", type: http, server: 180.149.232.85, port: 2610 }
   - { name: "HTTP-04", type: http, server: 180.149.232.122, port: 7860 }
   - { name: "HTTP-05", type: http, server: 119.40.90.1, port: 11611 }
   - { name: "HTTP-06", type: http, server: 180.149.235.137, port: 6321 }
-  - { name: "HTTP-07", type: http, server: 180.149.235.120, port:7860 }
+  - { name: "HTTP-07", type: http, server: 180.149.235.120, port: 7860 }
   - { name: "HTTP-08", type: http, server: 182.48.70.215, port: 11611 }
-`
+`;
 
       return new Response(proxies, {
         headers: {
-          "Content-Type": "text/plain; charset=utf-8"
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "no-store"
         }
-      })
+      });
     }
 
-    // =========================
-    // ⚡ MAIN CONFIG
-    // =========================
+    // MAIN CONFIG
     const config = `
 proxy-providers:
   myprovider:
@@ -64,8 +59,7 @@ proxy-providers:
       interval: 60
 
 proxy-groups:
-
-  - name: SELECTOR🔥
+  - name: "SELECTOR🔥"
     type: select
     proxies:
       - LOAD-BALANCE
@@ -121,13 +115,14 @@ rules:
   - DOMAIN-SUFFIX,firefox.net,DIRECT
 
   # Everything else
-  - MATCH,SELECTOR🔥
-`
+  - MATCH,"SELECTOR🔥"
+`;
 
     return new Response(config, {
       headers: {
-        "Content-Type": "text/plain; charset=utf-8"
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-store"
       }
-    })
+    });
   }
-}
+};
