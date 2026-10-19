@@ -35,6 +35,8 @@ proxies:
   - { name: "HTTP-06", type: http, server: 180.149.235.137, port: 6321 }
   - { name: "HTTP-07", type: http, server: 180.149.235.137, port: 6321 }
   - { name: "HTTP-08", type: http, server: 182.48.70.215, port: 11611 }
+  - { name: "HTTP-09", type: http, server: 180.149.235.24, port: 1994 }
+  - { name: "HTTP-10", type: http, server: 180.149.235.113, port: 2608 }
 `;
 
       return new Response(proxies, {
